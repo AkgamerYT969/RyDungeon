@@ -1,426 +1,89 @@
-[SIZE=6][B]⚔ RyDungeon[/B][/SIZE]
-
-[B]Made By TheRynzo[/B]
-
-A powerful and easy-to-use dungeon boss plugin for Paper 1.21.11.
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]✨ Features[/B][/SIZE]
-
-• In-game GUI Dungeon Editor
-• Create unlimited dungeons
-• Custom boss mob
-• Custom boss name
-• Boss health in hearts
-• Real-time boss health BossBar
-• Custom spawn interval
-• Custom boss live time
-• Kill rewards with Vault
-• Global BossBars
-• Up to 7 visible BossBars
-• BossBar color & style
-• HEALTH / TIMER / FULL progress
-• ACTIONBAR & HIDDEN modes
-• Global title + subtitle announcements
-• Global chat announcements
-• Lightning, particles & sounds
-• Custom console spawn commands
-• Multiple spawn commands
-• Custom BossBar title
-• BossBar placeholders
-• Easy dungeon join system
-• Per-dungeon YAML storage
-• Fully configurable GUI
-• Configurable sounds, messages & items
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]📦 Requirements[/B][/SIZE]
-
-• Paper 1.21.11
-• Java 21
-• Vault
-• Vault-compatible economy plugin
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]🚀 Installation[/B][/SIZE]
-
-1. Download RyDungeon.jar
-2. Put it inside your plugins folder
-3. Install Vault + an economy plugin
-4. Restart your server
-5. Configure config.yml
-6. Create your first dungeon
-
-[CODE]/rydungeon create Inferno[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]🎮 Commands[/B][/SIZE]
-
-[CODE]
-/rydungeon create <name>
-/rydungeon edit <name>
-/rydungeon delete <name>
-/rydungeon join
-/rydungeon join <name>
-/rydungeon list
-/rydungeon reload
-[/CODE]
-
-Alias:
-
-[CODE]/rydun[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]🔐 Permissions[/B][/SIZE]
-
-[CODE]
-rydungeon.admin
-rydungeon.join
-[/CODE]
-
-[B]rydungeon.admin[/B]
-Create, edit, delete and reload dungeons.
-
-[B]rydungeon.join[/B]
-Allows players to use the join command.
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]🛠 How To Create A Dungeon[/B][/SIZE]
-
-Create:
-
-[CODE]/rydungeon create Inferno[/CODE]
-
-The GUI will open automatically.
-
-Set:
-
-[B]1.[/B] Boss Spawn Point
-→ Click it to save your current location.
-
-[B]2.[/B] Boss Mob
-→ Enter a valid living EntityType.
-
-Example:
-
-[CODE]
-WITHER
-WARDEN
-ZOMBIE
-SKELETON
-RAVAGER
-ENDER_DRAGON
-[/CODE]
-
-[B]3.[/B] Boss Name
-
-Example:
-
-[CODE]&c&lInferno King[/CODE]
-
-[B]4.[/B] Boss Health
-
-Health uses hearts.
-
-[CODE]
-100 = 100 Hearts = 200 HP
-150 = 150 Hearts = 300 HP
-500 = 500 Hearts = 1000 HP
-[/CODE]
-
-[B]5.[/B] Spawn Interval
-
-Examples:
-
-[CODE]
-1s
-30s
-2m
-1h
-1d
-1h30m
-2m30s
-[/CODE]
-
-[B]6.[/B] Boss Live Time
-
-Example:
-
-[CODE]10m[/CODE]
-
-[B]7.[/B] Kill Reward
-
-Example:
-
-[CODE]5000[/CODE]
-
-The killer receives the reward through Vault.
-
-[B]8.[/B] BossBar
-
-Enable it and configure the title, color, style, progress and order.
-
-[B]9.[/B] Announcements
-
-Configure title, subtitle and chat messages.
-
-[B]10.[/B] Effects
-
-Enable lightning, particles and sounds.
-
-[B]11.[/B] Spawn Commands
-
-Add console commands separated by:
-
-[CODE];[/CODE]
-
-Example:
-
-[CODE]
-say The Inferno Boss has spawned!;give @a diamond 1
-[/CODE]
-
-Finally click [B]SAVE[/B].
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]❤️ Boss Health[/B][/SIZE]
-
-RyDungeon uses the boss's real Minecraft health.
-
-When BossBar progress is set to HEALTH, the bar decreases automatically as the boss takes damage.
-
-Example:
-
-[CODE]
-150 Hearts
-↓
-300 HP
-↓
-Boss takes damage
-↓
-BossBar updates automatically
-[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]📊 BossBar[/B][/SIZE]
-
-Modes:
-
-[CODE]
-BOSSBAR
-ACTIONBAR
-HIDDEN
-[/CODE]
-
-Progress:
-
-[CODE]
-HEALTH
-TIMER
-FULL
-[/CODE]
-
-Colors include:
-
-[CODE]
-PINK
-BLUE
-RED
-GREEN
-YELLOW
-PURPLE
-WHITE
-[/CODE]
-
-Styles include:
-
-[CODE]
-SOLID
-SEGMENTED_6
-SEGMENTED_10
-SEGMENTED_12
-SEGMENTED_20
-[/CODE]
-
-Up to 7 visible BOSSBAR-mode dungeon bars can be displayed by default.
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]📣 Global Announcements[/B][/SIZE]
-
-When a boss spawns, everyone online can receive:
-
-• Title
-• Subtitle
-• Chat message
-
-Example:
-
-[CODE]
-&c&lDUNGEON BOSS SPAWNED!
-
-&f%boss% &7has spawned in &e%name%
-[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]⚡ Spawn Effects[/B][/SIZE]
-
-• Lightning
-• Particles
-• Spawn sounds
-• Custom particle count
-• Custom volume
-• Custom pitch
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]💰 Rewards[/B][/SIZE]
-
-The player who kills the built-in dungeon boss receives the configured Vault reward.
-
-Example:
-
-[CODE]Reward: $5,000[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]⌨ Spawn Commands[/B][/SIZE]
-
-Multiple console commands are supported.
-
-Separate commands using:
-
-[CODE];[/CODE]
-
-Example:
-
-[CODE]
-say Boss spawned!;give @a diamond 1
-[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]🔤 BossBar Placeholders[/B][/SIZE]
-
-[CODE]
-%boss%
-%name%
-%status%
-%time%
-%reward%
-%health%
-%max-health%
-%boss-hp%
-%max-hearts%
-%boss-hearts%
-%world%
-%x%
-%y%
-%z%
-%hearts%
-%spawn-interval%
-%alive-time%
-[/CODE]
-
-Example:
-
-[CODE]
-&c&l%boss% &8• &c%boss-hearts%/%max-hearts% ❤ &8• &e%time%
-[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]🎛 GUI Editor[/B][/SIZE]
-
-The GUI can configure:
-
-• Boss Spawn Point
-• Boss Mob
-• Boss Name
-• Boss Health
-• Spawn Interval
-• Live Time
-• Kill Reward
-• BossBar
-• BossBar Mode
-• BossBar Title
-• BossBar Color
-• BossBar Style
-• BossBar Progress
-• BossBar Order
-• Darken Sky
-• Boss Music
-• Boss Fog
-• Announcement
-• Announcement Title
-• Announcement Subtitle
-• Announcement Chat
-• Spawn Effects
-• Particle
-• Spawn Sound
-• Spawn Commands
-• Save
-• Join
-• Delete
-• Close
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]🗺 Join Dungeon[/B][/SIZE]
-
-Teleport to a dungeon:
-
-[CODE]/rydungeon join Inferno[/CODE]
-
-When only one dungeon exists:
-
-[CODE]/rydungeon join[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]⚙ Configuration[/B][/SIZE]
-
-Main configuration:
-
-[CODE]plugins/RyDungeon/config.yml[/CODE]
-
-Dungeon files:
-
-[CODE]plugins/RyDungeon/dungeons/<name>.yml[/CODE]
-
-GUI items, slots, sounds, messages and default settings are configurable.
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]🔄 Reload[/B][/SIZE]
-
-[CODE]/rydungeon reload[/CODE]
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]📌 Important[/B][/SIZE]
-
-• Designed for Paper 1.21.11
-• Requires Java 21
-• Vault is required for economy rewards
-• Native Minecraft BossBars cannot have custom X/Y screen positioning
-• Dungeon data is saved separately in YAML files
-• RyDungeon does not create separate worlds for dungeons
-
-━━━━━━━━━━━━━━━━━━━━
-
-[SIZE=5][B]❤️ Credits[/B][/SIZE]
-
-[B]RyDungeon[/B]
-Made By TheRynzo
-
-Thank you for using RyDungeon!
+# RyDungeon
+
+Advanced Dungeon Boss System for Paper 1.21.11.
+
+**Made By TheRynzo**
+
+RyDungeon is a powerful and fully configurable Minecraft dungeon boss plugin designed for modern Paper servers. It provides an easy in-game GUI editor for creating and managing dungeon bosses, scheduled boss spawning, global BossBars, custom mobs, health tracking, server-wide announcements, Vault economy rewards, configurable spawn effects, console commands, and persistent per-dungeon configuration.
+
+The goal of RyDungeon is to provide a complete dungeon boss system that can be configured directly in-game without requiring constant manual editing of complicated configuration files.
+
+---
+
+## Features
+
+- Full in-game dungeon editor
+- Create multiple dungeons
+- Edit existing dungeons
+- Delete dungeons
+- Custom boss spawn locations
+- Custom living Bukkit EntityType
+- Custom boss names
+- Custom boss health in hearts
+- Real-time boss health tracking
+- Health-based BossBar progress
+- Timer-based BossBar progress
+- Full BossBar progress mode
+- Global BossBars
+- Up to 7 visible BossBars by default
+- BossBar color configuration
+- BossBar style configuration
+- BossBar title customization
+- BossBar stack order
+- BossBar modes: BOSSBAR, ACTIONBAR and HIDDEN
+- Configurable boss spawn intervals
+- Configurable boss live time
+- Automatic boss expiration
+- Vault economy kill rewards
+- Server-wide title announcements
+- Server-wide subtitle announcements
+- Server-wide chat announcements
+- Configurable lightning effects
+- Configurable particle effects
+- Configurable spawn sounds
+- Configurable particle count
+- Configurable sound volume
+- Configurable sound pitch
+- Custom console spawn commands
+- Multiple console spawn commands
+- Placeholder support
+- Easy dungeon join system
+- Separate YAML storage for every dungeon
+- Configurable GUI layout
+- Configurable GUI materials
+- Configurable GUI item names
+- Configurable GUI item lore
+- Configurable GUI slots
+- Configurable GUI sounds
+- Configurable plugin messages
+- Input validation
+- Reload support
+- Permission support
+
+---
+
+## Requirements
+
+| Requirement | Version |
+|---|---|
+| Minecraft Server | Paper 1.21.11 |
+| Java | 21 |
+| Vault | Required for economy rewards |
+| Economy | Any Vault-compatible economy plugin |
+
+RyDungeon is designed specifically for Paper 1.21.11.
+
+---
+
+## Installation
+
+### 1. Download RyDungeon
+
+Download the latest `RyDungeon.jar` from the Releases section of this repository.
+
+### 2. Install the plugin
+
+Place the plugin inside your server's:
+
+```text
+plugins/
