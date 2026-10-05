@@ -1,0 +1,367 @@
+# ==========================================================
+# RyDungeon 1.1.0
+# Paper 1.21.11 / Java 21
+# Made By TheRynzo
+# ==========================================================
+
+settings:
+  max-dungeons: 50
+  max-visible-bossbars: 7
+  scheduler-ticks: 20
+  bossbar-refresh-ticks: 5
+  require-vault-for-rewards: true
+  delete-data-on-invalid-name: false
+
+storage:
+  folder: dungeons
+  file-extension: .yml
+
+defaults:
+  boss:
+    type: WITHER
+    name: "&c&lDungeon Boss"
+    max-health-hearts: 150
+    spawn-interval: "30m"
+    alive-time: "10m"
+    reward-money: 5000.00
+    glowing: true
+    invulnerable: false
+    show-name: true
+
+  bossbar:
+    enabled: true
+    mode: BOSSBAR
+    title: "&c&lDUNGEON &8• &f%boss% &8• &c%boss-hearts%/%max-hearts% ❤ &8• &e%status% %time% &8• &6$%reward%"
+    color: RED
+    style: SOLID
+    progress-mode: HEALTH
+    stack-order: 1
+    darken-sky: false
+    play-boss-music: false
+    create-fog: false
+
+  announcement:
+    enabled: true
+    title: "&c&lDUNGEON BOSS SPAWNED!"
+    subtitle: "&f%boss% &7has spawned in &e%name%"
+    chat: "&8[&cDUNGEON&8] &f%boss% &chas spawned in &e%name%&c!"
+
+  effects:
+    enabled: true
+    lightning: true
+    particle: EXPLOSION
+    particle-count: 80
+    sound: ENTITY_WITHER_SPAWN
+    volume: 2.0
+    pitch: 1.0
+
+  spawn-commands:
+    enabled: false
+    commands: []
+    # Multiple commands may be entered through the GUI separated by ;
+    # Supported placeholders:
+    # %name% %boss% %world% %x% %y% %z% %reward% %time%
+    # %hearts% %max-hearts% %spawn-interval% %alive-time%
+
+gui:
+  title: "&8RyDungeon &7• &b%name%"
+  rows: 6
+  filler-material: GRAY_STAINED_GLASS_PANE
+  accent-material: LIGHT_BLUE_STAINED_GLASS_PANE
+
+  sounds:
+    open: BLOCK_CHEST_OPEN
+    click: UI_BUTTON_CLICK
+    success: ENTITY_PLAYER_LEVELUP
+    error: ENTITY_VILLAGER_NO
+    teleport: ENTITY_ENDERMAN_TELEPORT
+
+  editor:
+    # Slot numbers are 0-53 in a 6-row chest inventory.
+    spawn-point-slot: 10
+    boss-type-slot: 11
+    boss-name-slot: 12
+    health-slot: 13
+    spawn-interval-slot: 14
+    alive-time-slot: 15
+    reward-slot: 16
+
+    bossbar-slot: 19
+    bossbar-mode-slot: 20
+    bossbar-title-slot: 18
+    bossbar-color-slot: 21
+    bossbar-style-slot: 22
+    bossbar-progress-slot: 23
+    stack-order-slot: 24
+    darken-sky-slot: 25
+
+    boss-music-slot: 28
+    boss-fog-slot: 29
+    announcement-slot: 30
+    announcement-title-slot: 31
+    announcement-subtitle-slot: 32
+    announcement-chat-slot: 33
+
+    effects-slot: 34
+    particle-slot: 35
+    spawn-sound-slot: 36
+    spawn-command-slot: 37
+
+    save-slot: 45
+    join-slot: 46
+    delete-slot: 47
+    close-slot: 49
+
+  items:
+    spawn-point:
+      material: COMPASS
+      name: "&b&lBOSS SPAWN POINT"
+      lore:
+        - "&7World: &f%world%"
+        - "&7Location: &f%x%, %y%, %z%"
+        - ""
+        - "&eClick to set the spawn point"
+        - "&7to your current location."
+
+    boss-type:
+      material: SPAWNER
+      name: "&d&lBOSS MOB"
+      lore:
+        - "&7Type: &f%value%"
+        - ""
+        - "&eClick and type a living EntityType"
+        - "&7such as WITHER, WARDEN or ZOMBIE."
+
+    boss-name:
+      material: NAME_TAG
+      name: "&b&lBOSS NAME"
+      lore:
+        - "&7Name: &f%value%"
+        - ""
+        - "&eClick to edit the boss name."
+
+    health:
+      material: HEART
+      name: "&c&lBOSS HEALTH"
+      lore:
+        - "&7Health: &c%value% Hearts"
+        - "&7Internal HP: &f%hp%"
+        - ""
+        - "&eClick to set hearts."
+    spawn-interval:
+      material: CLOCK
+      name: "&e&lSPAWN EVERY"
+      lore:
+        - "&7Every: &f%value%"
+        - ""
+        - "&71s • 2m • 1h • 1d"
+        - "&eClick to edit."
+    alive-time:
+      material: HOURGLASS
+      name: "&e&lLIVE TIME"
+      lore:
+        - "&7Boss lives: &f%value%"
+        - ""
+        - "&eClick to edit."
+    reward:
+      material: GOLD_INGOT
+      name: "&6&lKILL REWARD"
+      lore:
+        - "&7Reward: &a$%value%"
+        - "&7Paid to the player who kills"
+        - "&7the built-in dungeon boss."
+        - ""
+        - "&eClick to edit."
+
+    bossbar:
+      material: DRAGON_BREATH
+      name: "&b&lBOSSBAR"
+      lore:
+        - "&7Enabled: &f%value%"
+        - "&7Mode: &f%mode%"
+        - "&7Global: &aALL WORLDS"
+        - ""
+        - "&eClick to toggle show/hide."
+    bossbar-mode:
+      material: PAPER
+      name: "&b&lBOSSBAR MODE"
+      lore:
+        - "&7Mode: &f%value%"
+        - "&8BOSSBAR / ACTIONBAR / HIDDEN"
+        - ""
+        - "&eClick to cycle."
+    bossbar-title:
+      material: NAME_TAG
+      name: "&b&lBOSSBAR TITLE"
+      lore:
+        - "&7%value%"
+        - ""
+        - "&7Placeholders:"
+        - "&f%boss% &7%name% &7%status% &7%time%"
+        - "&f%boss-hearts%/%max-hearts% &7%reward%"
+        - ""
+        - "&eClick to edit."
+    bossbar-color:
+      material: BLUE_DYE
+      name: "&9&lBOSSBAR COLOR"
+      lore:
+        - "&7Color: &f%value%"
+        - ""
+        - "&eClick to cycle."
+    bossbar-style:
+      material: IRON_BARS
+      name: "&f&lBOSSBAR STYLE"
+      lore:
+        - "&7Style: &f%value%"
+        - ""
+        - "&eClick to cycle."
+    bossbar-progress:
+      material: EXPERIENCE_BOTTLE
+      name: "&a&lHEALTH DISPLAY"
+      lore:
+        - "&7Mode: &f%value%"
+        - "&7HEALTH shows the actual boss HP."
+        - "&7TIMER shows remaining boss time."
+        - ""
+        - "&eClick to cycle."
+    stack-order:
+      material: LADDER
+      name: "&e&lBOSSBAR ORDER"
+      lore:
+        - "&7Order: &f%value% / 7"
+        - "&7Up to 7 visible global bars."
+        - ""
+        - "&eClick to cycle."
+    darken-sky:
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&8&lDARKEN SKY"
+      lore:
+        - "&7Enabled: &f%value%"
+        - "&eClick to toggle."
+
+    boss-music:
+      material: NOTE_BLOCK
+      name: "&d&lBOSS MUSIC"
+      lore:
+        - "&7Enabled: &f%value%"
+        - "&eClick to toggle."
+    boss-fog:
+      material: ENDER_EYE
+      name: "&5&lBOSS FOG"
+      lore:
+        - "&7Enabled: &f%value%"
+        - "&eClick to toggle."
+
+    announcement:
+      material: BELL
+      name: "&c&lSPAWN ANNOUNCEMENT"
+      lore:
+        - "&7Enabled: &f%value%"
+        - "&7Global title + subtitle + chat"
+        - "&eClick to toggle."
+    announcement-title:
+      material: TITLE
+      name: "&c&lANNOUNCEMENT TITLE"
+      lore:
+        - "&7%value%"
+        - "&eClick to edit."
+    announcement-subtitle:
+      material: PAPER
+      name: "&f&lANNOUNCEMENT SUBTITLE"
+      lore:
+        - "&7%value%"
+        - "&eClick to edit."
+    announcement-chat:
+      material: WRITABLE_BOOK
+      name: "&7&lANNOUNCEMENT CHAT"
+      lore:
+        - "&7%value%"
+        - "&eClick to edit."
+
+    effects:
+      material: FIREWORK_ROCKET
+      name: "&d&lSPAWN EFFECTS"
+      lore:
+        - "&7Enabled: &f%value%"
+        - "&7Lightning: &f%lightning%"
+        - "&eClick to toggle."
+    particle:
+      material: FIREWORK_STAR
+      name: "&d&lSPAWN PARTICLE"
+      lore:
+        - "&7Particle: &f%value%"
+        - "&eClick to cycle."
+    spawn-sound:
+      material: NOTE_BLOCK
+      name: "&d&lSPAWN SOUND"
+      lore:
+        - "&7Sound: &f%value%"
+        - "&eClick to cycle."
+
+    spawn-command:
+      material: COMMAND_BLOCK
+      name: "&6&lBOSS SPAWN COMMANDS"
+      lore:
+        - "&7Enabled: &f%value%"
+        - "&7Commands: &f%count%"
+        - ""
+        - "&7Runs as console after the built-in"
+        - "&7boss entity is created."
+        - ""
+        - "&eClick to replace commands."
+
+    save:
+      material: EMERALD
+      name: "&a&lSAVE"
+      lore:
+        - "&7Save all dungeon settings."
+    join:
+      material: ENDER_PEARL
+      name: "&b&lJOIN BOSS AREA"
+      lore:
+        - "&7Teleport to the dungeon spawn point."
+    delete:
+      material: TNT
+      name: "&c&lDELETE DUNGEON"
+      lore:
+        - "&cPermanent configuration deletion."
+        - "&eClick to confirm."
+    close:
+      material: BARRIER
+      name: "&c&lCLOSE"
+      lore:
+        - "&7Close this editor."
+
+messages:
+  prefix: "&8[&bRyDungeon&8] &7"
+  no-permission: "&cYou do not have permission."
+  usage: "&7/rydungeon create <name> &8• &7/rydungeon edit <name> &8• &7/rydungeon delete <name> &8• &7/rydungeon join [name]"
+  created: "&aDungeon &f%name% &ahas been created."
+  deleted: "&aDungeon &f%name% &ahas been deleted."
+  exists: "&cDungeon &f%name% &calready exists."
+  missing: "&cDungeon &f%name% &cdoes not exist."
+  max-dungeons: "&cThe maximum dungeon limit has been reached."
+  saved: "&aDungeon &f%name% &asaved."
+  spawn-set: "&aBoss spawn point saved to your current location."
+  joined: "&aYou joined the &f%name% &adungeon boss area."
+  no-spawn: "&cSet a Boss Spawn Point first."
+  invalid-type: "&cInvalid living EntityType. Try WITHER, WARDEN, ZOMBIE, ENDER_DRAGON, etc."
+  invalid-number: "&cInvalid number."
+  invalid-duration: "&cInvalid duration. Try &f1s, 2m, 1h, 1d &cor &f1h30m&c."
+  input-cancelled: "&cInput cancelled."
+  no-vault: "&cVault/economy is required for money rewards."
+  reward-given: "&aYou received &f$%reward% &afor killing &f%boss%&a."
+  boss-spawned: "&8[&cDUNGEON&8] &f%boss% &chas spawned in &e%name%&c!"
+  boss-killed: "&a%boss% &7was defeated in &f%name%&7!"
+  boss-expired: "&e%boss% &7expired in &f%name%&7."
+  commands-saved: "&aBoss spawn commands updated."
+  reloaded: "&aRyDungeon reloaded."
+  nothing-to-join: "&cThere is no dungeon available to join."
+  join-multiple: "&eMultiple dungeons exist. Use &f/rydungeon join <name>&e."
+  delete-warning: "&cClick CONFIRM DELETE to permanently delete this dungeon."
+  player-only: "&cOnly players can use this command."
+  console-created: "&aDungeon created. An admin must set its spawn point with the GUI."
+  boss-unavailable: "&cThe configured boss could not be spawned. Check the EntityType and console."
+  health-set: "&aBoss health set to &f%hearts% hearts &7(%hp% HP)."
+
+input-prefix: "&8[&bRyDungeon&8] &7Type the new value in chat or type &ccancel&7."

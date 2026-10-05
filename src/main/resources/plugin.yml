@@ -1,0 +1,22 @@
+name: RyDungeon
+version: 1.1.0
+main: com.therynzo.rydungeon.RyDungeonPlugin
+api-version: '1.21'
+author: TheRynzo
+description: GUI-configurable dungeon bosses, global bossbars and timed rewards.
+softdepend:
+  - Vault
+
+commands:
+  rydungeon:
+    description: Manage dungeon bosses.
+    usage: /rydungeon <create|edit|delete|join|list|reload>
+    aliases: [rydun]
+
+permissions:
+  rydungeon.admin:
+    description: Create, edit, delete and reload dungeon bosses.
+    default: op
+  rydungeon.join:
+    description: Join a dungeon boss area.
+    default: true
